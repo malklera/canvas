@@ -5,7 +5,6 @@ import (
 	"encoding/binary"
 	"encoding/gob"
 	"fmt"
-	"log"
 	"math"
 	"sort"
 	"strings"
@@ -1997,9 +1996,9 @@ func (seg Segment) Arc() (float64, float64, float64, bool, bool) {
 }
 
 // Segments returns the path segments as a slice of segment structures.
+//
+// Deprecated: Use [Path.Scanner] instead.
 func (p *Path) Segments() []Segment {
-	log.Println("WARNING: github.com/tdewolff/canvas/Path.Segments is deprecated, please use github.com/tdewolff/canvas/Path.Scanner") // TODO: remove
-
 	segs := []Segment{}
 	var start, end Point
 	for i := 0; i < len(p.d); {

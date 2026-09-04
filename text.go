@@ -1,7 +1,6 @@
 package canvas
 
 import (
-	"fmt"
 	"image"
 	"image/color"
 	"math"
@@ -502,8 +501,9 @@ func (rt *RichText) SetFace(face *FontFace) {
 }
 
 // SetFaceSpan sets the font face between start and end measured in bytes.
+//
+// Deprecated: Need recomendation of what to use instead.
 func (rt *RichText) SetFaceSpan(face *FontFace, start, end int) {
-	fmt.Println("WARNING: deprecated RichText.SetFaceSpan") // TODO: remove
 	if end <= start || rt.Len() <= start {
 		return
 	} else if rt.Len() < end {
@@ -575,32 +575,32 @@ func (rt *RichText) WriteLaTeX(s string) error {
 	return nil
 }
 
+// Deprecated: Use [RichText.WriteFace] instead.
 func (rt *RichText) Add(face *FontFace, text string) *RichText {
-	fmt.Println("WARNING: deprecated RichText.Add, use RichText.WriteFace") // TODO: remove
 	rt.WriteFace(face, text)
 	return rt
 }
 
+// Deprecated: Use [RichText.WriteCanvas] instead.
 func (rt *RichText) AddCanvas(c *Canvas, valign VerticalAlign) *RichText {
-	fmt.Println("WARNING: deprecated RichText.AddCanvas, use RichText.WriteCanvas") // TODO: remove
 	rt.WriteCanvas(c, valign)
 	return rt
 }
 
+// Deprecated: Use [RichText.WritePath] instead.
 func (rt *RichText) AddPath(path *Path, col color.RGBA, valign VerticalAlign) *RichText {
-	fmt.Println("WARNING: deprecated RichText.AddPath, use RichText.WritePath") // TODO: remove
 	rt.WritePath(path, col, valign)
 	return rt
 }
 
+// Deprecated: Use [RichText.WriteImage] instead.
 func (rt *RichText) AddImage(img image.Image, res Resolution, valign VerticalAlign) *RichText {
-	fmt.Println("WARNING: deprecated RichText.AddImage, use RichText.WriteImage") // TODO: remove
 	rt.WriteImage(img, res, valign)
 	return rt
 }
 
+// Deprecated: Use [RichText.WriteLaTeX] instead.
 func (rt *RichText) AddLaTeX(s string) *RichText {
-	fmt.Println("WARNING: deprecated RichText.AddLaTeX, use RichText.WriteLaTeX") // TODO: remove
 	rt.WriteLaTeX(s)
 	return rt
 }
@@ -1204,8 +1204,9 @@ type decorationSpan struct {
 }
 
 // WalkDecorations calls the callback for each color of decoration used per line.
+//
+// Deprecated: Use [Text.RenderDecorationsTo] instead.
 func (t *Text) WalkDecorations(r Renderer, m Matrix) {
-	fmt.Println("DEPRECATED: use Text.RenderDecorationsTo instead of Text.WalkDecorations")
 }
 
 // WalkLines calls the callback for each text line.
@@ -1230,8 +1231,8 @@ func (t *Text) WalkSpans(callback func(float64, float64, TextSpan)) {
 	}
 }
 
+// Deprecated: Use [Text.RenderTo] instead.
 func (t *Text) RenderAsPath(r Renderer, m Matrix, resolution Resolution) {
-	fmt.Println("DEPRECATED: use Text.RenderTo instead of Text.RenderAsPath")
 	t.RenderTo(r, m, resolution)
 }
 
