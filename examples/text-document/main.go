@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"image/png"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/tdewolff/canvas"
@@ -62,7 +63,7 @@ var lorem = []string{
 	`Ut porttitor leo a diam sollicitudin. Faucibus purus in massa tempor. Ante in nibh mauris cursus mattis molestie. In tellus integer feugiat scelerisque varius morbi. Viverra justo nec ultrices dui sapien eget mi proin. Adipiscing elit pellentesque habitant morbi tristique senectus. Nulla posuere sollicitudin aliquam ultrices sagittis orci a. Fames ac turpis egestas sed tempus urna et pharetra pharetra. Nascetur ridiculus mus mauris vitae. Feugiat nisl pretium fusce id velit. Mollis nunc sed id semper risus. Dictum fusce ut placerat orci nulla. Sit amet nulla facilisi morbi tempus iaculis. Iaculis at erat pellentesque adipiscing commodo elit at imperdiet dui. Non quam lacus suspendisse faucibus interdum posuere lorem ipsum. Vitae ultricies leo integer malesuada nunc vel risus commodo viverra. Pretium fusce id velit ut tortor pretium viverra suspendisse. Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.`,
 }
 
-const lenna = "../../resources/lenna.png"
+var lenna = filepath.Join("..", "..", "resources", "lenna.png")
 
 var y = 290.0
 
