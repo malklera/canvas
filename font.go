@@ -3,7 +3,6 @@ package canvas
 import (
 	"fmt"
 	"image/color"
-	"log"
 	"math"
 	"os"
 	"reflect"
@@ -181,8 +180,9 @@ var systemFonts = struct {
 }{}
 
 // FindLocalFont finds the path to a font from the system's fonts.
+//
+// Deprecated: Use [FindSystemFont] instead.
 func FindLocalFont(name string, style FontStyle) string {
-	log.Println("WARNING: github.com/tdewolff/canvas/FindLocalFont is deprecated, please use github.com/tdewolff/canvas/FindSystemFont") // TODO: remove
 	filename, _ := FindSystemFont(name, style)
 	return filename
 }
@@ -236,8 +236,9 @@ type Font struct {
 }
 
 // LoadLocalFont loads a font from the system's fonts.
+//
+// Deprecated: Use [LoadSystemFont] instead.
 func LoadLocalFont(name string, style FontStyle) (*Font, error) {
-	log.Println("WARNING: github.com/tdewolff/canvas/LoadLocalFont is deprecated, please use github.com/tdewolff/canvas/LoadSystemFont") // TODO: remove
 	return LoadSystemFont(name, style)
 }
 
@@ -396,14 +397,16 @@ func (family *FontFamily) SetFeatures(features string) {
 }
 
 // LoadLocalFont loads a font from the system's fonts.
+//
+// Deprecated: Use [FontFamily.LoadSystemFont] instead.
 func (family *FontFamily) LoadLocalFont(name string, style FontStyle) error {
-	log.Println("WARNING: github.com/tdewolff/canvas/FontFamily.LoadLocalFont is deprecated, please use github.com/tdewolff/canvas/FontFamily.LoadSystemFont") // TODO: remove
 	return family.LoadSystemFont(name, style)
 }
 
 // MustLoadLocalFont loads a font from the system's fonts and panics on error.
+//
+// Deprecated: Use [FontFamily.MustLoadSystemFont] instead.
 func (family *FontFamily) MustLoadLocalFont(name string, style FontStyle) {
-	log.Println("WARNING: github.com/tdewolff/canvas/FontFamily.MustLoadLocalFont is deprecated, please use github.com/tdewolff/canvas/FontFamily.MustLoadSystemFont") // TODO: remove
 	family.MustLoadSystemFont(name, style)
 }
 
@@ -768,8 +771,9 @@ func (face *FontFace) toPath(glyphs []text.Glyph, ppem uint16) (*Path, float64) 
 }
 
 // Decorate will return the decoration path over a given width in millimeters.
+//
+// Deprecated: Use [FontFace.RenderTo] instead.
 func (face *FontFace) Decorate(width float64) *Path {
-	fmt.Println("DEPRECATED: FontFace.Decorate is removed in favour of FontFace.RenderTo")
 	return &Path{}
 }
 
