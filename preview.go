@@ -22,12 +22,6 @@ func loadFont(name string, style FontStyle) ([]byte, error) {
 
 // DrawPreview draws the canvas's preview to a Context.
 func DrawPreview(ctx *Context) error {
-	root := os.Getenv("GOPATH")
-	if root == "" {
-		root = filepath.Join(os.Getenv("HOME"), "go")
-	}
-	root = filepath.Join(root, "src/github.com/tdewolff/canvas")
-
 	latin, err := loadFont("DejaVu Serif, serif", FontRegular)
 	if err != nil {
 		return err
@@ -40,7 +34,7 @@ func DrawPreview(ctx *Context) error {
 	if err != nil {
 		return err
 	}
-	lenna, err := os.ReadFile(filepath.Join(root, "resources/lenna.png"))
+	lenna, err := os.ReadFile(filepath.Join("..", "..", "resources", "lenna.png"))
 	if err != nil {
 		return err
 	}
