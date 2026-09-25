@@ -22,6 +22,12 @@ func loadFont(name string, style FontStyle) ([]byte, error) {
 
 // DrawPreview draws the canvas's preview to a Context.
 func DrawPreview(ctx *Context) error {
+	_, filename, _, ok := runtime.Caller(0)
+	if !ok {
+		return fmt.Errorf("unable to retrieve filepath of preview.go")
+	}
+	root := filepath.Dir(filename)
+
 	latin, err := loadFont("DejaVu Serif, serif", FontRegular)
 	if err != nil {
 		return err
@@ -34,7 +40,7 @@ func DrawPreview(ctx *Context) error {
 	if err != nil {
 		return err
 	}
-	lenna, err := os.ReadFile(filepath.Join("..", "..", "resources", "lenna.png"))
+	lenna, err := os.ReadFile(filepath.Join(root, "resources/lenna.png"))
 	if err != nil {
 		return err
 	}
